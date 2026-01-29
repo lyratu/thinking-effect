@@ -152,6 +152,12 @@
         gl.attachShader(program, createShader(gl, gl.VERTEX_SHADER, vsSource));
         gl.attachShader(program, createShader(gl, gl.FRAGMENT_SHADER, fsSource));
         gl.linkProgram(program);
+
+        // Check program link status and log errors if linking fails
+        if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+            console.error('Unable to initialize the shader program:', gl.getProgramInfoLog(program));
+        }
+
         gl.useProgram(program);
 
         // 获取 Uniform 地址
