@@ -104,7 +104,7 @@
             
             // 色彩随时间偏移
             vec4 layerColor = (cos(i + vec4(0.0, 1.2, 2.8, 1.0) + iTime * 0.4) + 1.0) * 0.5;
-            color += layerColor / length(v * 1.2);
+            color += layerColor / max(length(v * 1.2), 1e-3);
         }
 
         float dist = length(p);
